@@ -50,6 +50,20 @@ jobs:
         #   VITE_PUBLIC_BASE: ${{ secrets.VITE_PUBLIC_BASE }}
         run: yarn build
 
+      - name: Prepare remote directory and show info
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.ALIYUN_HOST }}
+          username: ${{ secrets.ALIYUN_USERNAME }}
+          password: ${{ secrets.ALIYUN_PASSWORD }}
+          port: ${{ secrets.ALIYUN_PORT }}
+          script: |
+            set -e
+            mkdir -p "${{ secrets.ALIYUN_STATIC_DIR }}"
+            echo "Remote user:" $(whoami)
+            uname -a || true
+            ls -ld "${{ secrets.ALIYUN_STATIC_DIR }}" || true
+
       - name: Deploy to Aliyun via SCP
         # Copies the built files in dist/ to the remote static directory.
         # Ensure all required Secrets are set as described at the top of this file.
@@ -59,9 +73,11 @@ jobs:
           username: ${{ secrets.ALIYUN_USERNAME }}
           password: ${{ secrets.ALIYUN_PASSWORD }}
           port: ${{ secrets.ALIYUN_PORT }}
-          source: "dist/*"
+          source: "dist/**"
           target: ${{ secrets.ALIYUN_STATIC_DIR }}
           strip_components: 0
+          overwrite: true
+          debug: true
 
       # - name: (Optional) Prepare remote directory (create/clean) BEFORE upload
       #   if: false  # set to "always()" or remove this line after you configure
