@@ -1,0 +1,89 @@
+# Build and deploy the Vite app to an Alibaba Cloud (ECS) server on push to main.
+#
+# How to use:
+# 1) In your GitHub repo, add the following Secrets (Settings → Secrets and variables → Actions → New repository secret):
+#    - ALIYUN_HOST         : your ECS public IP or domain (e.g. 47.xx.xx.xx)
+#    - ALIYUN_PORT         : SSH port (e.g. 22)
+#    - ALIYUN_USERNAME     : SSH username (e.g. root or deploy)
+#    - ALIYUN_PASSWORD     : SSH password for the above user
+#    - ALIYUN_STATIC_DIR   : Absolute path on the server where static files are served
+#                            (e.g. /var/www/hamster-note)
+# 2) (Optional) If you need build-time env vars for Vite, add Secrets beginning with VITE_.
+#    IMPORTANT: Any VITE_ variables are embedded into the built front-end and become public.
+#    Do NOT put real secrets that must stay private into Vite build-time env.
+
+name: Build & Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  # Allow manual trigger if needed
+  workflow_dispatch: {}
+
+concurrency:
+  group: homepage-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy to Aliyun ECS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        # If you need build-time env vars for Vite, add them in env: using repo Secrets (must start with VITE_)
+        # Example:
+        # env:
+        #   VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
+        #   VITE_PUBLIC_BASE: ${{ secrets.VITE_PUBLIC_BASE }}
+        run: yarn build
+
+      - name: Deploy to Aliyun via SCP
+        # Copies the built files in dist/ to the remote static directory.
+        # Ensure all required Secrets are set as described at the top of this file.
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.ALIYUN_HOST }}
+          username: ${{ secrets.ALIYUN_USERNAME }}
+          password: ${{ secrets.ALIYUN_PASSWORD }}
+          port: ${{ secrets.ALIYUN_PORT }}
+          source: "dist/*"
+          target: ${{ secrets.ALIYUN_STATIC_DIR }}
+          strip_components: 0
+
+      # - name: (Optional) Prepare remote directory (create/clean) BEFORE upload
+      #   if: false  # set to "always()" or remove this line after you configure
+      #   uses: appleboy/ssh-action@v1.2.0
+      #   with:
+      #     host: ${{ secrets.ALIYUN_HOST }}
+      #     username: ${{ secrets.ALIYUN_USERNAME }}
+      #     password: ${{ secrets.ALIYUN_PASSWORD }}
+      #     port: ${{ secrets.ALIYUN_PORT }}
+      #     script: |
+      #       mkdir -p "${{ secrets.ALIYUN_STATIC_DIR }}"
+      #       # WARNING: The following line removes all existing files in the target dir.
+      #       # Uncomment only if you really want a clean deploy each time.
+      #       # rm -rf "${{ secrets.ALIYUN_STATIC_DIR }}"/*
+
+      # - name: (Optional) Restart service (e.g., Nginx) AFTER upload
+      #   if: false  # enable and adjust commands as needed
+      #   uses: appleboy/ssh-action@v1.2.0
+      #   with:
+      #     host: ${{ secrets.ALIYUN_HOST }}
+      #     username: ${{ secrets.ALIYUN_USERNAME }}
+      #     password: ${{ secrets.ALIYUN_PASSWORD }}
+      #     port: ${{ secrets.ALIYUN_PORT }}
+      #     script: |
+      #       sudo systemctl reload nginx || sudo systemctl restart nginx
