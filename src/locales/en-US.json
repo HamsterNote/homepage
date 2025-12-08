@@ -1,0 +1,65 @@
+{
+  "brand": "Hamster Note",
+  "brandEn": "Hamster Note",
+  "nav": {
+    "features": "Features",
+    "platforms": "Platforms",
+    "testimonials": "Praise",
+    "github": "GitHub"
+  },
+  "hero": {
+    "title": "Lighter, faster, freer notes",
+    "subtitle": "Local-first with optional cloud sync. Collaborate across devices.",
+    "ctaDownload": "Download now",
+    "ctaPrimary": "Learn more",
+    "ctaSecondary": "GitHub Repo"
+  },
+  "features": {
+    "title": "Why Hamster Note",
+    "ease": {
+      "title": "Simple & delightful",
+      "desc": "Out-of-the-box smooth UX. What-you-see-is-what-you-get, keyboard and multi-touch friendly."
+    },
+    "praise": {
+      "title": "Loved by users",
+      "desc": "A balance of focus and speed — favored by students, creators, and engineers."
+    },
+    "storage": {
+      "title": "Local + Cloud",
+      "desc": "Keep everything local and private, or enable cloud sync for real-time multi-device editing."
+    },
+    "multitouch": {
+      "title": "Multi-touch",
+      "desc": "Native multi-finger drag/select powered by the open-source library multi-drag.",
+      "link": "View multi-drag"
+    }
+  },
+  "platforms": {
+    "title": "Platforms",
+    "coming": "Coming soon",
+    "ios": "iOS",
+    "android": "Android",
+    "macos": "macOS",
+    "linux": "Linux",
+    "windows": "Windows",
+    "kindle": "Kindle"
+  },
+  "testimonials": {
+    "title": "What users say",
+    "items": [
+      "Clean UI. Search and organization feel natural.",
+      "Switch between local and cloud anytime; sync across devices is solid.",
+      "Multi-touch gestures feel natural — dragging to manage notes is super fast."
+    ]
+  },
+  "footer": {
+    "made": "Made with ❤️",
+    "rights": "© 2025 Hamster Note"
+  },
+  "lang": {
+    "label": "Language",
+    "zhCN": "Simplified Chinese",
+    "zhTW": "Traditional Chinese",
+    "enUS": "English"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "brand": "仓鼠笔记",
+  "brandEn": "Hamster Note",
+  "nav": {
+    "features": "功能",
+    "platforms": "平台",
+    "testimonials": "好评",
+    "github": "GitHub"
+  },
+  "hero": {
+    "title": "更轻、更快、更自由的笔记",
+    "subtitle": "支持本地存储与云端同步，跨平台多设备协同编辑。",
+    "ctaDownload": "立即下载",
+    "ctaPrimary": "立即了解",
+    "ctaSecondary": "GitHub 仓库"
+  },
+  "features": {
+    "title": "为什么选择仓鼠笔记",
+    "ease": {
+      "title": "简单好用",
+      "desc": "开箱即用的流畅体验，所见即所得，支持键盘与多指交互。"
+    },
+    "praise": {
+      "title": "用户好评如潮",
+      "desc": "专注与高效的结合，深受学生、创作者与工程师喜爱。"
+    },
+    "storage": {
+      "title": "本地 + 云端",
+      "desc": "完全本地存储，隐私自控；也可一键开启云端同步，多设备同时编辑。"
+    },
+    "multitouch": {
+      "title": "多指操作",
+      "desc": "原生支持多指拖拽与选择，基于开源库 multi-drag。",
+      "link": "查看 multi-drag"
+    }
+  },
+  "platforms": {
+    "title": "全平台支援",
+    "coming": "暂未开放",
+    "ios": "iOS",
+    "android": "Android",
+    "macos": "macOS",
+    "linux": "Linux",
+    "windows": "Windows",
+    "kindle": "Kindle"
+  },
+  "testimonials": {
+    "title": "用户怎么说",
+    "items": [
+      "界面简洁，搜索与组织都很顺手。",
+      "本地与云端随时切换，跨设备同步很稳。",
+      "多指操作做得很自然，拖拽管理笔记超快。"
+    ]
+  },
+  "footer": {
+    "made": "用 ❤️ 打造",
+    "rights": "© 2025 仓鼠笔记"
+  },
+  "lang": {
+    "label": "语言",
+    "zhCN": "简体中文",
+    "zhTW": "繁體中文",
+    "enUS": "English"
+  }
+}

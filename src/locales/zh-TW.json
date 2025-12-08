@@ -1,0 +1,65 @@
+{
+  "brand": "倉鼠筆記",
+  "brandEn": "Hamster Note",
+  "nav": {
+    "features": "功能",
+    "platforms": "平台",
+    "testimonials": "好評",
+    "github": "GitHub"
+  },
+  "hero": {
+    "title": "更輕、更快、更自由的筆記",
+    "subtitle": "支援本地儲存與雲端同步，跨平台多裝置協作編輯。",
+    "ctaDownload": "立即下載",
+    "ctaPrimary": "立即了解",
+    "ctaSecondary": "GitHub 倉庫"
+  },
+  "features": {
+    "title": "為什麼選擇倉鼠筆記",
+    "ease": {
+      "title": "簡單好用",
+      "desc": "開箱即用的流暢體驗，所見即所得，支援鍵盤與多指互動。"
+    },
+    "praise": {
+      "title": "使用者好評如潮",
+      "desc": "專注與高效的結合，深受學生、創作者與工程師喜愛。"
+    },
+    "storage": {
+      "title": "本地 + 雲端",
+      "desc": "完全本地儲存，隱私自控；也可一鍵開啟雲端同步，多裝置同時編輯。"
+    },
+    "multitouch": {
+      "title": "多指操作",
+      "desc": "原生支援多指拖拽與選擇，基於開源庫 multi-drag。",
+      "link": "檢視 multi-drag"
+    }
+  },
+  "platforms": {
+    "title": "全平台支援",
+    "coming": "暫未開放",
+    "ios": "iOS",
+    "android": "Android",
+    "macos": "macOS",
+    "linux": "Linux",
+    "windows": "Windows",
+    "kindle": "Kindle"
+  },
+  "testimonials": {
+    "title": "使用者怎麼說",
+    "items": [
+      "介面簡潔，搜尋與組織都很順手。",
+      "本地與雲端隨時切換，跨裝置同步很穩。",
+      "多指操作很自然，拖拽管理筆記超快。"
+    ]
+  },
+  "footer": {
+    "made": "用 ❤️ 打造",
+    "rights": "© 2025 倉鼠筆記"
+  },
+  "lang": {
+    "label": "語言",
+    "zhCN": "簡體中文",
+    "zhTW": "繁體中文",
+    "enUS": "English"
+  }
+}
